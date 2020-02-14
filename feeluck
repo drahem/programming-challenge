@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+
+int main()
+{
+    int t=0;
+    cin>>t;
+	int c=1;
+	while(t--){
+		string website[10];
+		int r[10];
+		int maxi=0;
+		for(int i=0;i<10;i++){
+			cin>>website[i]>>r[i];
+			maxi=max(maxi,r[i]);
+		}
+		printf("Case #%d:\n",c);
+		for(int i=0;i<10;i++){
+			if(r[i]==maxi){
+				cout<<website[i]<<endl;
+			}
+		}
+		c++;
+	}
+    return 0;
+}
+
