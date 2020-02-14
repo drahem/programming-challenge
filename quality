@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+
+using namespace std;
+
+int readInt () {
+	bool minus = false;
+	int result = 0;
+	char ch;
+	ch = getchar();
+	while (true) {
+		if (ch == '-') break;
+		if (ch >= '0' && ch <= '9') break;
+		ch = getchar();
+	}
+	if (ch == '-') minus = true; else result = ch-'0';
+	while (true) {
+		ch = getchar();
+		if (ch < '0' || ch > '9') break;
+		result = result*10 + (ch - '0');
+	}
+	if (minus)
+		return -result;
+	else
+		return result;
+}
+
+
+
+int main()
+{
+	int s[6];
+	int z=1;
+	while(cin>>s[0])
+	{
+		int c=0;
+		int score=0;
+		for (int i=1;i<6;i++)
+		{
+			cin>>s[i];
+		}
+		for(int i=0;i<3;i++)
+		{
+			if(s[i]!=0)
+			{
+			c++;
+			score=score+(s[i]+(s[i+3]-1)*1200);
+			}
+		}
+		cout<<"team "<<z<<":"<<" "<<c<<","<<" "<<score<<endl;
+		z++;
+	}
+}
+
+
+
