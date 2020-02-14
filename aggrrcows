@@ -1,0 +1,48 @@
+#include <iostream>
+#include<stdio.h>
+#include <algorithm>
+using namespace std;
+int n,c;
+bool f(int mid,int a[]){
+int ncow=1,lpos=a[0];
+		for(int i=1;i<n;i++){
+
+			if(a[i]-lpos>=mid){
+				lpos=a[i];
+				ncow++;
+
+				if(ncow==c)
+				return true;
+				}
+			}return false;
+}
+int bs(int a[]){
+	int l=0,r=a[n-1],mid,max=-1;
+	while(l<r){
+		mid=(l+r)/2;
+		if(f(mid,a)==true){
+			if(mid>max){
+				max=mid;
+			}
+			l=mid+1;
+		}else{
+			r=mid;
+		}
+	}
+	return max;
+	}
+int main() {
+	int t;
+	scanf("%d",&t);
+	while(t--){
+		scanf("%d %d",&n,&c);
+		int a[n];
+		for(int i=0;i<n;i++){
+			scanf("%d",&a[i]);
+		}
+		sort(a,a+n);
+		int x=bs(a);
+		printf("%d\n",x);
+	}
+	return 0;
+}
